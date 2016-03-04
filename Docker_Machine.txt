@@ -1,0 +1,67 @@
+#
+#
+#
+
+docker-machine
+
+docker-machine ls
+
+docker-machine create
+
+docker-machine create --driver virtualbox virtualbox
+
+docker-machine env virtualbox
+
+docker-machine env --shell cmd virtualbox
+
+	SET DOCKER_TLS_VERIFY=1
+	SET DOCKER_HOST=tcp://192.168.99.100:2376
+	SET DOCKER_CERT_PATH=C:\Users\perezju\.docker\machine\machines\virtualbox
+	SET DOCKER_MACHINE_NAME=virtualbox
+	REM Run this command to configure your shell:
+	REM     FOR /f "tokens=*" %i IN ('"C:\Program Files\Docker Toolbox\docker-machine.exe" env --shell cmd virtualbox') DO %
+	i
+
+	& "C:\Program Files\Docker Toolbox\docker-machine.exe" env virtualbox | Invoke-Expression
+
+	export DOCKER_TLS_VERIFY="1"
+	export DOCKER_HOST="tcp://192.168.99.100:2376"
+	export DOCKER_CERT_PATH="/Users/<yourusername>/.docker/machine/machines/default"
+	export DOCKER_MACHINE_NAME="default"
+
+# Run this command to configure your shell:
+# 
+
+eval "$(docker-machine env virtualbox)"
+
+#Connect your shell to the new machine.
+
+eval "$(docker-machine env virtualbox)"
+
+
+docker run
+docker run hello-world
+docker run -it ubuntu bash
+docker run busybox echo hello world
+
+docker-machine ip virtualbox
+
+docker run -d -p 8000:80 nginx
+
+curl $(docker-machine ip virtualbox):8000
+
+docker-machine stop default
+docker-machine start default
+
+
+#Cloud Provider
+
+Digital Ocean
+
+$ docker-machine create --driver digitalocean --digitalocean-access-token xxxxx docker-sandbox
+
+
+Amazon Web Services (AWS)
+
+$ docker-machine create --driver amazonec2 --amazonec2-access-key AKI******* --amazonec2-secret-key 8T93C*******  aws-sandbox
+
