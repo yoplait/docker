@@ -1,14 +1,7 @@
 ## Docker stuff
 
-Have fun
 
 #### dockerfiles
-
-
-
-
-#### cloud
-
 
 
 #### Instructions
