@@ -1,0 +1,44 @@
+dockerfile_tutorial.txt
+
+
+
+
+# Build image
+
+sudo docker build .
+sudo docker build -t my_centos .    
+sudo docker build -t my_git .    
+sudo docker build -t shykes/myapp .
+sudo docker build -t shykes/myapp:1.0.2 -t shykes/myapp:latest .
+
+sudo docker build -f /path/to/a/Dockerfile .
+
+
+
+# verify images
+docker images
+
+# delete images
+docker rmi
+docker rmi image $(docker images -q)
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+
+
+docker rm `docker ps -aq`
+docker rm $(docker ps -q -f status=exited)
+
+three_months_old_images=`docker images | grep -vi "<none>" | tr -s ' ' | cut -d" " -f3,4,5,6 | grep "3 months ago" | cut -d" " -f1`
+docker rmi $three_months_old_images
+
+
+# Execute images
+sudo docker run --name my_instance -i -t my_centos
+
+docker inspect my_instance
+
+
+docker volume
+docker volume ls
+docker volume ls -q 
+
+docker volume rm $(docker volume ls -q )

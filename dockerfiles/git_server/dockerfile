@@ -1,0 +1,47 @@
+############################################################
+# Dockerfile to build Own Git server
+# Based on 
+############################################################
+
+# Usage: FROM [image name]
+FROM gogs/gogs
+
+# Usage: MAINTAINER [name]
+MAINTAINER perezpardojc@gmail.com
+
+# Usage: VOLUME ["/dir_1", "/dir_2" ..]
+VOLUME ["C:\Software\code\"]
+
+# Usage: ADD [source directory or URL] [destination directory]
+# ADD C:\\Software\\code\\ /gogs-data/ 
+
+# Usage: WORKDIR /path
+WORKDIR /gogs-data/
+
+
+# Usage: EXPOSE [port]
+EXPOSE 8022
+EXPOSE 3000
+
+# Copy app to /src
+#COPY . /src
+#CMD cd /src && node ./app.js
+
+# docker run --name=gogs -p 10022:22 -p 10080:3000 -v /c/Users/docker/git:/data gogs/gogs
+
+# docker run -d --name my-go-git-server --publish 8022:22 --publish 3000:3000 --volume `pwd`/gogs-data/:/data hypriot/rpi-gogs-raspbian
+
+# docker run -d --name my-go-git-server --publish 8022:22 --publish 3000:3000 --volume /c/Users/:/data hypriot/rpi-gogs-raspbian
+
+# docker run -d --name my-go-git-server --publish 8022:22 --publish 3000:3000 --volume /C/VM/:/data hypriot/rpi-gogs-raspbian
+
+# Build an image using the Dockerfile at current location
+# Example: sudo docker build -t [name] .
+# sudo docker build -t my_git .    
+
+# docker run -d --name my-go-git-server --publish 8022:22 --publish 3000:3000 --volume `pwd/gogs-data/:/data hypriot/rpi-gogs-raspbian
+
+
+docker\git
+docker run -d -p 2222:22 -v /c/Users/docker/git:/git unixtastic/git-ssh-server
+

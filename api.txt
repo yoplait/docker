@@ -1,0 +1,33 @@
+api.txt
+
+
+
+$ curl --data build=true -X POST https://registry.hub.docker.com/u/svendowideit/testhook/trigger/be579c
+curl -X POST https://user:token@jenkinsserver.com/buildByToken/build?job=test&token=test
+
+
+
+
+curl -H "Content-Type:application/json" --data'{"build":true}' -X POST https://registry.hub.docker.com/u/perezpardojc/hello-world-docker-node/trigger/aec3e706-ba69-456d-bee1-b17ce7daa623/
+
+curl -H "Content-Type: application/json" --data "build=true" -X POST "$DOCKERHUB_AUTOBUILD_URL"
+
+curl --data "build=true" -X POST "$DOCKERHUB_AUTOBUILD_URL"
+
+
+#####
+
+
+DOCKERHUB_AUTOBUILD_URL
+https://registry.hub.docker.com/u/perezpardojc/hello-world-docker-node/trigger/aec3e706-ba69-456d-bee1-b17ce7daa623/
+
+
+DOCKERHUB_AUTOBUILD_TRIGGER
+curl -H "Content-Type: application/json" --data "build=true" -X POST "$DOCKERHUB_AUTOBUILD_URL"
+curl -H "Content-Type: application/json" --data '{"build"=true}' -X POST "$DOCKERHUB_AUTOBUILD_URL"
+
+
+curl -H "Content-Type: application/json" --data '{"build"=true}' -X POST "https://registry.hub.docker.com/u/perezpardojc/hello-world-docker-node/trigger/aec3e706-ba69-456d-bee1-b17ce7daa623/"
+
+
+curl -H "Content-Type: application/json" --data "build=true" -X POST https://registry.hub.docker.com/u/perezpardojc/hello-world-docker-node/trigger/aec3e706-ba69-456d-bee1-b17ce7daa623/

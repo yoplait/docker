@@ -1,0 +1,23 @@
+vbox.txt
+
+
+.\VBoxManage.exe
+
+.\VBoxManage.exe list vms
+
+.\VBoxManage.exe showvminfo
+.\VBoxManage.exe showvminfo "virtualbox"
+.\VBoxManage.exe showvminfo "virtualbox" --details
+.\VBoxManage.exe showvminfo "virtualbox" --machinereadable
+.\VBoxManage.exe showvminfo "virtualbox" --log
+
+.\VBoxManage sharedfolder add "VM name" --name "sharename" --hostpath "C:\test"
+.\VBoxManage sharedfolder add "virtualbox" --name "volume" --hostpath "C:\VM\volume" --automount
+.\VBoxManage sharedfolder add "virtualbox" --name "volume" --hostpath "C:\VM\volume"
+
+.\VBoxManage setextradata "VM name" VBoxInternal2/SharedFoldersEnableSymlinksCreate/sharename 1
+
+
+
+
+net use T: \\vboxsvr\sharename

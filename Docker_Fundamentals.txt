@@ -1,0 +1,174 @@
+#how to install in centos 7
+
+#see platform
+uname -r 
+
+#install
+sudo yum -y update
+
+#other ways
+#sudo curl -O -sSL https://get.docker.com/rpm/1.7.0/centos-6/RPMS/x86_64/docker-engine-1.7.0-1.el6.x86_64.rpm
+#sudo curl -O -sSL https://get.docker.com/rpm/1.7.0/centos-7/RPMS/x86_64/docker-engine-1.7.0-1.el7.centos.x86_64.rpm
+#sudo curl -O -sSL https://get.docker.com/rpm/1.7.0/centos-7/SRPMS/docker-engine-1.7.0-1.el7.centos.src.rpm
+
+sudo yum -y install docker docker-registry
+sudo yum -y install device-mapper device-mapper-event device-mapper-libs device-mapper-event-libs
+sudo yum localinstall --nogpgcheck docker-engine-1.7.0-1.el6.x86_64.rpm
+
+#avoid problems in security
+
+sudo apt-get install apparmor
+
+
+#about services
+
+sudo systemctl stop firewalld.service
+sudo systemctl disable firewalld.service
+sudo systemctl status firewalld.service
+
+sudo systemctl enable docker.service
+
+sudo systemctl start docker.service
+sudo systemctl stop docker.service
+
+sudo systemctl restart docker.service
+sudo systemctl status docker.service
+or
+sudo service docker start
+sudo chkconfig docker on
+
+
+#adding user without sudo
+
+sudo groupadd docker
+sudo usermod -aG docker centos
+sudo usermod -a -G docker centos
+(boot2docker shellinit 2> /dev/null)
+sudo usermod -aG docker ${USER}
+sudo usermod -aG docker centos
+
+sudo docker -d
+
+ps -ef | grep docker
+
+
+# get images
+
+sudo docker pull centos
+sudo docker pull centos:centos6
+
+sudo docker images centos
+sudo docker images centos6
+
+sudo docker run -it centos echo Hello-World
+sudo docker run -i -t centos /bin/bash
+docker run -t -i ubuntu /bin/bash
+
+/c/Users/docker/git
+
+docker run -t -i --volume /C/VM/volume:/data  --volume  /c/Users/:/data2 ubuntu /bin/bash
+docker run -t -i --volume /C/VM/volume:/data  --volume  /c/Users/docker/git:/data2 ubuntu /bin/bash
+
+sudo docker run -t -i ubuntu /bin/bash
+
+
+sudo docker run hello-world
+sudo docker run hello-world
+sudo docker run -it ubuntu bash
+
+
+#Uninstall
+yum list installed | grep docker
+sudo yum -y remove docker-engine.x86_64 
+rm -rf /var/lib/docker
+
+
+#working
+sudo docker info 
+docker info 
+
+	we get FATA[0000] Get http:///var/run/docker.sock/v1.18/info: dial unix /var/run/docker.sock: permission denied. Are you trying to connect to a TLS-enabled daemon without TLS?
+
+sudo docker pull busybox
+docker run busybox
+docker run -i busybox
+docker run -t busybox
+docker run -it busybox
+docker run -d busybox
+docker run -itd busybox
+
+docker attach 10cb209829c3
+
+docker ps --no-trunc=true
+
+cid=$(docker run -itd busybox)
+echo $cid
+
+docker inspect $cid
+
+docker stop 
+docker ps
+docker ps -q
+docker kill $(docker ps -q)
+
+#remove all images
+docker rm $(docker ps -aq)
+docker rm -f $(docker ps -aq)
+
+docker run --name jc -itd busybox
+docker stop jc
+
+docker run busybox /bin/echo Hello Docker
+docker help
+
+
+#Listing containers
+
+sudo docker images --tree
+docker images
+docker images --tree
+
+docker search centos
+docker history centos
+
+
+#machines running
+sudo docker ps # Lists only running containers
+sudo docker ps -a # Lists all containers
+
+#playing volumes
+
+docker run -it -v /jc busybox
+control p control q to exit without kill
+
+docker restart 2d2c9aaa87ef
+
+docker exec 2d2c9aaa87ef ls /jc
+docker attach 2d2c9aaa87ef
+
+docker run -i -t 2d2c9aaa87ef /bin/bash
+
+docker run -it -v /jc busybox
+
+docker images
+
+docker history busybox
+
+docker run -it -v /jc2 busybox
+docker run -it -v /home/centos/volume:/jc2 busybox
+sudo docker run -it -v /home/centos/volume:/jc2 busybox
+
+
+#verify info about mount point
+docker inspect 20bec4b4404d
+docker inspect gloomy_stallman
+docker attach gloomy_stallman
+
+su -c "setenforce 0"
+#restore
+su -c "setenforce 0"
+
+#solved problems host in centos
+
+#file system read only
+sudo docker run -it -v /home/centos/volume:/jc2:ro busybox

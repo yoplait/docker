@@ -1,0 +1,50 @@
+############################################################
+#
+# Dockerfile to build first Centos
+# Based on Centos!
+#
+############################################################
+
+# Usage: FROM [image name]
+FROM centos
+
+# Usage: MAINTAINER [name]
+MAINTAINER perezpardojc@gmail.com
+
+# Setting Environment
+# Usage: ENV key value 
+ENV directorio1 /data1/
+ENV directorio2 /data2/
+
+# Usage: VOLUME ["/dir_1", "/dir_2" ..]
+VOLUME directorio1
+VOLUME directorio2
+
+# Usage: WORKDIR /path
+# WORKDIR /gogs-data/
+# WORKDIR ${foo}   
+
+# Usage: EXPOSE [port]
+EXPOSE 22
+
+# Copy app to /src
+# COPY . /src
+#CMD cd /src && node ./app.js
+
+# RUN section
+
+# Update base image
+RUN yum -y update && 
+	yum -y clean all && \
+	yum -y install wget   && \
+	yum -y install netstat  && \
+	yum -y install curl  && \
+	yum -y install git  && \
+
+RUN echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~' 
+RUN echo 'we are RUNning some # of cool things' 
+RUN /bin/bash -c 'source $HOME/.bashrc ;\
+echo $HOME'
+
+#  docker build -t my_git .    
+
