@@ -1,9 +1,14 @@
-#how to install in centos 7
+#
+#
+#
 
-#see platform
+
+# how to install in centos 7
+
+# see / verify  platform
 uname -r 
 
-#install
+# install
 sudo yum -y update
 
 #other ways
@@ -18,7 +23,6 @@ sudo yum localinstall --nogpgcheck docker-engine-1.7.0-1.el6.x86_64.rpm
 #avoid problems in security
 
 sudo apt-get install apparmor
-
 
 #about services
 
@@ -87,7 +91,7 @@ rm -rf /var/lib/docker
 sudo docker info 
 docker info 
 
-	we get FATA[0000] Get http:///var/run/docker.sock/v1.18/info: dial unix /var/run/docker.sock: permission denied. Are you trying to connect to a TLS-enabled daemon without TLS?
+we get FATA[0000] Get http:///var/run/docker.sock/v1.18/info: dial unix /var/run/docker.sock: permission denied. Are you trying to connect to a TLS-enabled daemon without TLS?
 
 sudo docker pull busybox
 docker run busybox
