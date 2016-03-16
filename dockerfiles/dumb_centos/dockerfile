@@ -47,6 +47,3 @@ RUN echo '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
 RUN echo 'we are RUNning some # of cool things' 
 RUN /bin/bash -c 'source $HOME/.bashrc ;\
 echo $HOME'
-
-#  docker build -t my_git .    
-
