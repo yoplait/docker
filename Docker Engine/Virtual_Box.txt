@@ -1,4 +1,13 @@
-vbox.txt
+# VirtualBox
+
+About how to improve the experience using docker and VirtualBox
+
+## fix environment
+
+#### Path
+
+#### Commands
+```
 
 
 .\VBoxManage.exe
@@ -18,6 +27,10 @@ vbox.txt
 .\VBoxManage setextradata "VM name" VBoxInternal2/SharedFoldersEnableSymlinksCreate/sharename 1
 
 
-
-
 net use T: \\vboxsvr\sharename
+```
+
+VBoxManage sharedfolder add boot2docker-vm \
+--name home \
+--hostpath /Users \
+--automount

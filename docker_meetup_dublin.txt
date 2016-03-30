@@ -1,0 +1,17 @@
+
+
+docker pull hello-world
+docker pull alpine
+docker pull seqvence/static-site
+
+docker pull mhart/alpine-node
+docker pull python:2.7-alpine
+docker pull manomarks/worker
+docker pull redis:alpine
+docker pull postgres:9.4
+
+
+clear \
+docker --version \
+docker-machine --version \
+docker-compose --version 
