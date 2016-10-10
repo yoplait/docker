@@ -14,4 +14,7 @@ docker pull postgres:9.4
 clear \
 docker --version \
 docker-machine --version \
-docker-compose --version 
+docker-compose --version \
+& 'C:\Program Files\Oracle\VirtualBox\VBoxManage.exe' --version \
+Get-WmiObject Win32_OperatingSystem | Format-Table caption,OSArchitecture,ServicePackMajorVersion
+

@@ -24,4 +24,5 @@ Some examples of dockerfiles
 
 #### Commands
 
+* `docker --version`
 * `docker build -t <name_for_build> . `

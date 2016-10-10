@@ -2,12 +2,26 @@
 #
 #
 
+# vpn issue
+
+route add 192.168.99.0 mask 255.255.255.0 192.168.99.1 
+route add 192.168.99.0 mask 255.255.255.0 192.168.99.1 METRIC 1
+route add 192.168.99.0 mask 255.255.255.0 192.168.99.1 METRIC 5000
+
+route delete 192.168.99.0/24
+route delete 192.168.99.0 mask 255.255.255.0 192.168.99.1 
+
+$ sudo ifconfig vboxnet0 down
+$ sudo ifconfig vboxnet0 up
+
 docker-machine
 
 docker-machine ls
 
 docker-machine status
 docker-machine start
+docker-machine restart
+
 docker-machine active
 
 docker-machine create

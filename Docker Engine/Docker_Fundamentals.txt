@@ -176,3 +176,9 @@ su -c "setenforce 0"
 
 #file system read only
 sudo docker run -it -v /home/centos/volume:/jc2:ro busybox
+
+
+
+# Acceder a la shell interactiva
+
+docker exec -it "id of running container" bash
